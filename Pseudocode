@@ -1,0 +1,49 @@
+html
+
+Create one row representing yellow box in example: our trivia panel
+Within this, create a header row, a time remaining row, a question row, and a responses row
+
+So something like:
+
+div row "yellow-container"
+	div row "header"
+	div row "time remaining"
+	div row "question"
+	div row "responses"
+<end div>
+
+
+
+Javascript
+
+Must remember to store initial state for easy reset button functionality
+
+gameState = {
+	correctAnswers = 0,
+	wrongAnswers = 0,
+	timeRemaining: setTimeout(function() {}, 1000 * seconds);
+	content = [
+	{
+		question: "Which Cub wears number 17?",
+		answers: ["Kris Bryant", "Anthony Rizzo", "Javier Baez", Jon Lester],
+		correctAnswer: "Kris Bryant"
+	},
+		{
+		question: "Which Cleveland Indian committed a heinous error in Game 6 of the World Series?",
+		answers: ["Mike Napoli", "Tyler Naquin", "Trevor Bauer", "Francisco Lindor"],
+		correctAnswer: "Tyler Naquin"
+	},
+
+	]
+
+	potentialQuestions: ["What is 1+1?", "What was Kris Bryant's WAR?", "What gaffe was made at the Oscars?", "Who won the Super Bowl?"],
+	potentialAnswers: ["1"]
+}
+
+
+global variable
+
+var questionBank
+
+What if we created objects with the four answer set? And then linked them to the appropriate question using if then logic. 
+
