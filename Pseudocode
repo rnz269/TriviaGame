@@ -47,3 +47,40 @@ var questionBank
 
 What if we created objects with the four answer set? And then linked them to the appropriate question using if then logic. 
 
+
+
+
+Need three more functions: correct, incorrect, and out of time.
+
+
+function correstResponse () {
+	gameState.correctAnswers ++;
+		gameState.counter ++;
+		
+		nextQuestion();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

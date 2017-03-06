@@ -8,8 +8,9 @@ gameState = {
 	currentAnswer: "",
 	currentChoices:"",
 	userSelection:"",
-
+	counter: 0,
 	timeRemaining: 
+
 
 
 
@@ -45,35 +46,88 @@ gameState = {
 };
 
 // Need to figure out how to get option to recognize it's the correct option
+// Selecting a "package" of content in the array
 
-var selection = content[0];
-console.log(selection);
-gameState.currentQuestion = selection.question;
-gameState.currentAnswer = selection.correctAnswer;
-gameState.currentChoices = selection.answers;
+
+nextQuestion();
 $(".answer1").click(function(){
 	if (gameState.currentChoices[0]===gameState.currentAnswer) {
+		console.log("correct!");
 		gameState.correctAnswers ++;
-		gameState.currentQuestion = "Correct!";
-		selection = content[1];
-		gameState.currentQuestion = selection.question;
-		gameState.currentAnswer = selection.correctAnswer;
-		gameState.currentChoices = selection.answers;
+		gameState.counter ++;
+		replaceScoreboard();
 	}
 	else {
 		console.log("wrong!");
 		gameState.wrongAnswers ++;
+		gameState.counter ++;
+		nextQuestion();
 
 	}
 	renderScoreboard();
 });
 
+$(".answer2").click(function(){
+	if (gameState.currentChoices[1]===gameState.currentAnswer) {
+		gameState.correctAnswers ++;
+		gameState.counter ++;
+		nextQuestion();
+	}
+	else {
+		console.log("wrong!");
+		gameState.wrongAnswers ++;
+		gameState.counter ++;
+		nextQuestion();
+
+	}
+	renderScoreboard();
+});
+
+$(".answer3").click(function(){
+	if (gameState.currentChoices[2]===gameState.currentAnswer) {
+		gameState.correctAnswers ++;
+		gameState.counter ++;
+		nextQuestion();
+	}
+	else {
+		console.log("wrong!");
+		gameState.wrongAnswers ++;
+		gameState.counter ++;
+		nextQuestion();
+
+	}
+	renderScoreboard();
+});
+
+$(".answer4").click(function(){
+	if (gameState.currentChoices[3]===gameState.currentAnswer) {
+		gameState.correctAnswers ++;
+		gameState.counter ++;
+		nextQuestion();
+	}
+	else {
+		console.log("wrong!");
+		gameState.wrongAnswers ++;
+		gameState.counter ++;
+		nextQuestion();
+
+	}
+	renderScoreboard();
+});
 
 // var selection = content[Math.floor(Math.random()*5)];
 // console.log(selection);
 // gameState.currentQuestion = selection.question;
 // gameState.currentAnswer = selection.correctAnswer;
 // gameState.currentChoices = selection.answers;
+
+
+function nextQuestion () {
+	selection = content[gameState.counter];
+		gameState.currentQuestion = selection.question;
+		gameState.currentAnswer = selection.correctAnswer;
+		gameState.currentChoices = selection.answers;
+}
 
 function renderScoreboard () {
 	var questionCurrent = $(".question").html(gameState.currentQuestion);
@@ -83,6 +137,16 @@ function renderScoreboard () {
 	var option4 = $(".answer4").html(gameState.currentChoices[3]);
 	var wins = $(".wins").html(gameState.correctAnswers);
 }
+
+function replaceScoreboard () {
+	var questionCurrent = $(".question").html("Correct!");
+	var option1 = $(".answer1").html("<img src = '../images/raw.gif'");
+	var option2 = $(".answer2").html("");
+	var option3 = $(".answer3").html("");
+	var option4 = $(".answer4").html("");
+	var wins = $(".wins").html(gameState.correctAnswers);
+	nextQuestion();
+} 
 
 console.log(renderScoreboard());
 
