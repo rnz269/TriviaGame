@@ -111,7 +111,7 @@ $(".answer4").click(function(){
 	}
 	renderScoreboard();
 })
-}
+// }
 
 // else if (gameState.currentQuestion == "Correct!"){
 // 	$(".answer1").click(function(){
@@ -285,9 +285,9 @@ function returnWrong () {
 	}
 
 // Disable clicks when gif is showing
-	function disableClicks () {
+	// function disableClicks () {
 
-	}
+	// }
 
 
 
