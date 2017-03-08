@@ -12,7 +12,7 @@ gameState = {
 	timeFreeze:false,
 	counter: 0,
 	correctGIFS: [
-	"assets/images/bryzzo.gif", "assets/images/motteClap.gif", "assets/images/rizzoSlide.gif", "assets/images/russellFist.gif", "assets/images/heywardAllGood.gif"
+	"assets/images/bryzzo.gif", "assets/images/motteClap.gif", "assets/images/rizzoSlide.gif", "assets/images/bryantCrushed.gif", "assets/images/bryantWS.gif"
 	],
 	wrongGIFS: [
 	"assets/images/hendricksFrustrated.gif", "assets/images/nateWrong.gif", "assets/images/garzaWrong.gif", "assets/images/maddonFrustrated.gif", "assets/images/rizzoWrong.gif"  
@@ -21,7 +21,7 @@ gameState = {
 	content: [
 	// Object 1 in array:
 	{
-		question: "Which Cub wears number 17?",
+		question: "Which Cub hit a game-tying homerun in the ninth against the San Francisco Giants in game 3 of the NLDS?",
 		answers: ["Kris Bryant", "Anthony Rizzo", "Javier Baez", "Jon Lester"],
 		correctAnswer: "Kris Bryant"
 	},
@@ -32,19 +32,19 @@ gameState = {
 		correctAnswer: "Tyler Naquin"
 	},
 		{
-		question: "In the year 1900 in the U.S. what were the most popular first names given to boy and girl babies?",
-		answers: ["William and Elizabeth", "Joseph and Catherine", "John and Mary", "George and Anne"],
-		correctAnswer: "Tyler Naquin"
+		question: "Who led the Cubs pitching staff in wins above replacement in 2016?",
+		answers: ["Jon Lester", "Kyle Hendricks", "Jake Arrieta", "John Lackey"],
+		correctAnswer: "Kyle Hendricks"
 	},
 		{
-		question: "When did the Liberty Bell get its name?",
-		answers: ["when it was made, in 1701", "when it rang on July 4, 1776", "in the 19th century, when it became a symbol of the abolition of slavery", "none of the above"],
-		correctAnswer: "Tyler Naquin"
+		question: "Against whom did Kris Bryant hit 3 homeruns and 2 doubles in a single game?",
+		answers: ["Milwaukee Brewers", "Colorado Rockies", "Los Angeles Dodgers", "Cincinnati Reds"],
+		correctAnswer: "Cincinnati Reds"
 	},
 		{
-		question: "Which Cleveland Indian committed a heinous error in Game 6 of the World Series?",
-		answers: ["Mark", "Tyler ", "Trevor", "Francisco"],
-		correctAnswer: "Tyler Naquin"
+		question: "Who recorded the final out of the World Series?",
+		answers: ["Jon Lester", "Aroldis Chapman", "Mike Montgomery", "Carl Edwards Jr."],
+		correctAnswer: "Mike Montgomery"
 	}
 	],
 	
@@ -71,6 +71,7 @@ gameState = {
 
 nextQuestion();
 renderScoreboard();
+// if (gameState.currentQuestion !== "Correct!" && gameState.currentQuestion !== "Wrong!" && gameState.currentQuestion !== "Out of Time!"){
 $(".answer1").click(function(){
 	if (gameState.currentChoices[0]===gameState.currentAnswer) {
 		returnCorrect();
@@ -109,8 +110,23 @@ $(".answer4").click(function(){
 		returnWrong();
 	}
 	renderScoreboard();
-});
+})
+}
 
+// else if (gameState.currentQuestion == "Correct!"){
+// 	$(".answer1").click(function(){
+// 	nextQuestion;
+// 	});
+// 	$(".answer2").click(function(){
+// 		nextQuestion;
+// 		});
+// 	$(".answer3").click(function(){
+// 		nextQuestion;
+// 		});
+// 	$(".answer4").click(function(){
+// 		nextQuestion;
+// 		});
+// };
 // var selection = content[Math.floor(Math.random()*5)];
 // console.log(selection);
 // gameState.currentQuestion = selection.question;
@@ -119,7 +135,7 @@ $(".answer4").click(function(){
 
 
 function nextQuestion () {
-	if (gameState.counter < 5) {	
+	if (gameState.counter < 5) {
 		var selection = gameState.content[gameState.counter];
 		gameState.currentQuestion = selection.question;
 		gameState.currentAnswer = selection.correctAnswer;
@@ -134,12 +150,12 @@ function nextQuestion () {
 		gameState.currentChoices = "";
 
 		var questionCurrent = $(".question").html(gameState.currentQuestion);
-		$(".answers").css("background-color", "yellow");
-		$(".answers").css("border", "none");
+		
 		var option1 = $(".answer1").html("");
 		var option2 = $(".answer2").html("Correct Answers: " + gameState.correctAnswers);
 		var option3 = $(".answer3").html("Incorrect Answers: " + gameState.wrongAnswers);
 		var option4 = $(".answer4").html("Unanswered: " + gameState.unanswered);
+
 		console.log(gameState.correctAnswers);
 
 		var restartButton = $("<button>");
@@ -167,12 +183,10 @@ function renderScoreboard () {
 }
 
 
-
-
-
-
 function returnCorrect () {
-	fiveSeconds();
+
+
+	fourSeconds();
 	console.log("Correct!");
 	// reset timer
 	gameState.currentQuestion = "Correct!";
@@ -182,8 +196,7 @@ function returnCorrect () {
 	gameState.counter ++;
 	gameState.correctAnswers ++;
 	gameState.timeFreeze = true;
-	gameState.timeRemaining.timeCounter = $("time2").text();
-	gameState.timeFreeze = true;
+	
 	
 
 	var questionCurrent = $(".question").html(gameState.currentQuestion);
@@ -195,7 +208,20 @@ function returnCorrect () {
 } 
 
 function returnWrong () {
-	fiveSeconds();
+	// $(".answer1").click(function(){
+	// nextQuestion;
+	// });
+	// $(".answer2").click(function(){
+	// 	nextQuestion;
+	// 	});
+	// $(".answer3").click(function(){
+	// 	nextQuestion;
+	// 	});
+	// $(".answer4").click(function(){
+	// 	nextQuestion;
+	// 	});
+
+	fourSeconds();
 	console.log("Wrong!");
 	// reset timer
 	gameState.currentQuestion = "Wrong!";
@@ -219,7 +245,20 @@ function returnWrong () {
 
 
 	function timeIsUp () {
-		fiveSeconds();
+		// $(".answer1").click(function(){
+		// nextQuestion;
+		// });
+		// $(".answer2").click(function(){
+		// 	nextQuestion;
+		// 	});
+		// $(".answer3").click(function(){
+		// 	nextQuestion;
+		// 	});
+		// $(".answer4").click(function(){
+		// 	nextQuestion;
+		// 	});
+
+		fourSeconds();
 		console.log("Time is up!");
 		gameState.currentQuestion = "Out of Time!";
 		gameState.currentChoices = "";
@@ -228,7 +267,7 @@ function returnWrong () {
 		gameState.counter ++;
 		gameState.unanswered ++;
 		gameState.timeFreeze = true;
-		
+			
 
 		var questionCurrent = $(".question").html(gameState.currentQuestion);
 		var option1 = $(".answer1").html(resourceGIF);
@@ -239,13 +278,36 @@ function returnWrong () {
 	}
 
 
-	function fiveSeconds () {
+	function fourSeconds () {
 		setTimeout(function(){
 		nextQuestion();
-	}, 1000 * 5);
+	}, 1000 * 4);
 	}
 
-	
+// Disable clicks when gif is showing
+	function disableClicks () {
+
+	}
+
+
+
+
+
+// Restart Function
+	$(".restart").click(function(){
+		gameState.correctAnswers = 0;
+		gameState.wrongAnswers = 0;
+		gameState.unanswered = 0;
+		gameState.currentQuestion = 0;
+		gameState.currentAnswer = 0;
+		gameState.currentChoices = 0;
+		gameState.userSelection = 0;
+		gameState.timeFreeze = 0;
+		gameState.counter = 0;
+		$(".restart").html("");
+		nextQuestion();
+	});
+
 	// function countdown = for (var i = 0; i < 30; i++) {
 	// setTimeout(function() {
 	// 	console.log("lower!")

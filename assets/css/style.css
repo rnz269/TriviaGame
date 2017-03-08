@@ -7,35 +7,43 @@
 
 
 .container {
-	border: 2px solid green;
-	background-color:yellow;
+/*	border: 2px solid green;*/
+/*	background:url("../diamond.jpg") no-repeat center center;
+	background-size:cover;*/
+
 }
 
 body {
-	/*background:url("../images/earth.jpg") no-repeat center center;*/
-	/*background:url("../images/earth2.jpg") no-repeat center center;*/
+	background:url("../images/diamond.jpg") no-repeat center center;
 	background-size:cover;
 }
 
 .fancytitle {
-	color:gray;
+	color: black;
 	font-size:3em;
 }
 
 .answers {
 	font-family:lato;
-	color:gray;
+	color:black;
 	font-size:1.5em;
+	overflow:hidden;
 }
 
 .answers:hover{
-background-color:pink;
-border:solid blue 2px;
+
+color:#00008B;
+
 }
 
 .question {
 	font-family:lato;
-	color:gray;
+	color:black;
 	font-size:1.5em;
+}
+
+.font {
+	font-family:lato;
+	color:black;
 }
 
